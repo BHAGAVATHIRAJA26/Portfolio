@@ -1,0 +1,114 @@
+/* index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg-rgb: 10, 10, 15;
+    --color-card-rgb: 18, 18, 24;
+    --color-text-rgb: 224, 224, 224;
+    --color-accent-cyan-rgb: 0, 255, 255;
+    --color-accent-pink-rgb: 255, 0, 255;
+    --color-accent-purple-rgb: 170, 0, 255;
+  }
+  
+  [data-theme='light'] {
+    --color-bg-rgb: 250, 250, 252;
+    --color-card-rgb: 255, 255, 255;
+    --color-text-rgb: 15, 23, 42;
+    --color-accent-cyan-rgb: 0, 180, 255;
+    --color-accent-pink-rgb: 255, 20, 147;
+    --color-accent-purple-rgb: 138, 43, 226;
+  }
+
+  /* Premium Light Mode Specific Backgrounds and Decors */
+  [data-theme='light'] .animate-blob {
+    opacity: 0.8 !important;
+    mix-blend-mode: multiply;
+    filter: blur(140px);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    cursor: none;
+  }
+  body {
+    @apply bg-dark-bg text-text-primary transition-colors duration-300;
+    cursor: none;
+  }
+  * {
+    cursor: none !important;
+  }
+}
+
+/* ── Custom Cursor ──
+   Cursor elements are fully styled inline by Framer Motion (CustomCursor.jsx).
+   Only the global cursor:none suppression is needed here.
+   The ring uses mix-blend-mode: exclusion for a professional look on any bg.
+*/
+
+
+/* Custom Webkit Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(var(--color-bg-rgb), 1);
+  border-left: 1px solid rgba(var(--color-accent-cyan-rgb), 0.05);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(var(--color-accent-cyan-rgb), 0.4), rgba(var(--color-accent-pink-rgb), 0.4));
+  border-radius: 8px;
+  border: 2px solid rgba(var(--color-bg-rgb), 1);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(var(--color-accent-cyan-rgb), 0.8), rgba(var(--color-accent-pink-rgb), 0.8));
+}
+::-webkit-scrollbar:horizontal {
+  height: 0;
+  display: none;
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(var(--color-card-rgb), 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(var(--color-accent-cyan-rgb), 0.2);
+  }
+  .glass-card {
+    background: rgba(var(--color-card-rgb), 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(var(--color-accent-cyan-rgb), 0.15);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  [data-theme='light'] .glass-card {
+    background: rgba(var(--color-card-rgb), 0.7);
+    border: 1px solid rgba(var(--color-accent-cyan-rgb), 0.3);
+    box-shadow: 0 10px 40px -10px rgba(var(--color-accent-cyan-rgb), 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  }
+  .glass-card:hover {
+    border-color: rgba(var(--color-accent-cyan-rgb), 0.5);
+    box-shadow: 0 0 20px rgba(var(--color-accent-cyan-rgb), 0.1);
+    transform: translateY(-5px);
+  }
+  [data-theme='light'] .glass-card:hover {
+    border-color: rgba(var(--color-accent-pink-rgb), 0.5);
+    box-shadow: 0 15px 50px -10px rgba(var(--color-accent-pink-rgb), 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+  }
+  .neon-text {
+    text-shadow: 0 0 5px rgba(var(--color-accent-cyan-rgb), 1), 0 0 10px rgba(var(--color-accent-cyan-rgb), 1);
+  }
+  .gradient-border {
+    background: linear-gradient(135deg, rgba(var(--color-accent-cyan-rgb), 1), rgba(var(--color-accent-pink-rgb), 1));
+    padding: 2px;
+    border-radius: 1rem;
+  }
+  .inner-content {
+    background: rgba(var(--color-card-rgb), 0.9);
+    border-radius: 1rem;
+    height: 100%;
+    width: 100%;
+  }
+}

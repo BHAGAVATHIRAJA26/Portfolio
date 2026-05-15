@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="gr" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FFFF" />
+      <stop offset="100%" stop-color="#FF00FF" />
+    </linearGradient>
+  </defs>
+  <!-- Dark glass-like background -->
+  <rect width="100" height="100" rx="24" fill="#111827" />
+  <rect width="100" height="100" rx="24" fill="none" stroke="url(#gr)" stroke-width="6" />
+  
+  <!-- Text Logo -->
+  <text x="50" y="56" text-anchor="middle" dominant-baseline="middle" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="bold" font-size="54" fill="url(#gr)">
+    &lt;B/&gt;
+  </text>
+</svg>
