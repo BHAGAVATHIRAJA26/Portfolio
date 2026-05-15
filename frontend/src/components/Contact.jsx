@@ -20,7 +20,7 @@ const Contact = () => {
     setSubmitError('');
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://clear-dingos-boil.loca.lt';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://backend-seven-topaz-80.vercel.app';
       const response = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',
         headers: {
