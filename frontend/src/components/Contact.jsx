@@ -20,7 +20,7 @@ const Contact = () => {
     setSubmitError('');
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://clear-dingos-boil.loca.lt';
       const response = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',
         headers: {
