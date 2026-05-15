@@ -25,17 +25,35 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Please provide name, email, and message.' });
   }
 
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
+  let transporter;
+  let finalEmail = process.env.EMAIL_USER || 'bhagavathiraja.s26@gmail.com';
+
+  if (!process.env.EMAIL_PASS) {
+    // Generate test SMTP service account from ethereal.email
+    let testAccount = await nodemailer.createTestAccount();
+    transporter = nodemailer.createTransport({
+      host: 'smtp.ethereal.email',
+      port: 587,
+      secure: false,
+      auth: {
+        user: testAccount.user,
+        pass: testAccount.pass,
+      },
+    });
+    console.log('Using Ethereal for demo mode');
+  } else {
+    transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+  }
 
   const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_USER,
+    from: finalEmail,
+    to: finalEmail,
     subject: `Portfolio Contact Form Submission from ${name}`,
     html: `
       <h3>New Contact Form Submission</h3>
