@@ -28,6 +28,13 @@ transporter.verify(function(error, success) {
   }
 });
 
+
+
+
+app.get('/', (req, res) => {
+  res.send('Backend is running!');
+});
+
 // Primary endpoint for receiving form data and sending email
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
